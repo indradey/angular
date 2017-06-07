@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<style>
+.animate {
+  transition: all linear 0.5s;
+  background-color: lightblue;
+  height: 100px;
+}
+
+.ng-hide {
+  height: 0;
+}
+
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+<script>
+    //alert("hello");
+    var app = angular.module('myApp', ['ngAnimate']);
+    app.controller('myCtrl', function($scope) {
+        //alert("Hello");
+        $scope.Val = false;
+        $scope.count==0;
+        $scope.setvalue=function(){
+            $scope.Val = true;
+            $scope.count++;
+            if($scope.count%2==0)
+            {
+                $scope.Val=true;
+            }
+        };   
+        
+});
+
+</script>
+
+<body ng-app="myApp" ng-init="setvalue()">
+<div ng-controller="myCtrl">
+<h1>Hide the DIV: <input type="checkbox" ng-model="myCheck"></h1>
+<input type="button" ng-click="setvalue();" Value="Click Me!!"> {{Val}}
+<div class = "animate" ng-hide="Val"></div>
+</div>
+</body>
+</html>
